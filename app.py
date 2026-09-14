@@ -90,16 +90,20 @@ def dashboard():
     # entries = conn.execute(
     #     "SELECT * FROM entries"
     # ).fetchall()
+    dates = conn.execute(
+        "SELECT * FROM dates"
+    ).fetchall()
 
     # TODO: Close the connection
-    # conn.close()
+    conn.close()
 
     # TODO: Pass entries into your template
     # Example:
     # return render_template("dashboard.html", entries=entries, username=session["user"])
+    return render_template("dashboard.html", dates=dates, username=session["user"])
 
-    # TEMPORARY (remove later)
-    return render_template("dashboard.html", username=session["user"])
+    # # TEMPORARY (remove later)
+    # return render_template("dashboard.html", username=session["user"])
 
 
 # ---------- CREATE ----------

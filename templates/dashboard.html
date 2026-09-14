@@ -31,18 +31,18 @@
 
     </div>
     <hr>
-<!-- {% for entry in entries %}
+{% for date in dates %}
     <div>
-        <h3>{{ entry['title'] }}</h3>
-        <p>{{ entry['content'] }}</p>
+        <h3>{{ date['title'] }}</h3>
+        
+        <p>{{ date['subject'] }}</p>
 
-        TODO: Add Edit link
+        <!-- TODO: Add Edit link -->
        
 
     </div>
-    <hr> -->
+    <hr>
 {% endfor %}
--->
 
 <!-- TODO: If no entries exist, display a message like:
 "No entries yet!" -->
@@ -52,4 +52,5 @@
 <!-- TODO: Add a logout button -->
 <a href="/logout"><button>Logout</button></a>
 
+{% endfor %}
 {% endblock %}

@@ -83,7 +83,7 @@ def dashboard():
         return redirect(url_for("login"))
 
     # TODO: Connect to the database
-    # conn = get_db()
+    conn = get_db()
 
     # TODO: Get all entries that belong to the logged-in user
     # Example:

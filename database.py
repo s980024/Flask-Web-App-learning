@@ -14,12 +14,12 @@ def init_db():
             password TEXT
         )
     """)
-    # conn.execute("""
-    #     CREATE TABLE IF NOT EXISTS dates (
-    #         type TEXT PRIMARY KEY,
-    #         password TEXT
-    #     )
-    # """)
+    conn.execute("""
+        CREATE TABLE IF NOT EXISTS dates (
+            date TEXT PRIMARY KEY,
+            subject TEXT
+        )
+    """)
 
     conn.commit()
     conn.close()

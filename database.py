@@ -16,7 +16,7 @@ def init_db():
     """)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS dates (
-            date TEXT PRIMARY KEY,
+            date TEXT PRIMARY KEY, 
             subject TEXT
         )
     """)

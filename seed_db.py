@@ -39,11 +39,10 @@ def seed_database():
                 (username, hashed_pw)
             )
             print(f"Created user: {username}")
-        for date, title in sample_dates:
-            hashed_pw = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt())
+        for date, subject in sample_dates:
             conn.execute(
-                "INSERT INTO dates (date, title) VALUES (?, ?)",
-                (date, title)
+                "INSERT INTO dates (date, subject) VALUES (?, ?)",
+                (date, subject)
             )
             print(f"Created entry: {date}")
         

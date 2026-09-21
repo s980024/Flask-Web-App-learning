@@ -113,7 +113,7 @@ def dashboard():
 # - Save data to the database (POST)
 # - Redirect back to dashboard
 # NOTE: Remove the triple """ before and after each route to 'uncomment'
-"""
+
 @app.route("/create", methods=["GET", "POST"])
 def create():
     if "user" not in session:
@@ -121,18 +121,31 @@ def create():
 
     if request.method == "POST":
         # TODO: Get form data (title, content)
-
+        date = request.form["date"].strip()
+        subject = request.form["subject"].strip()
         # TODO: Connect to database
+        if not date or not subject:
+            error = "Fields cannot be empty"
+        else:
+            conn = get_db()
+            try:
+                conn.execute(
+                    "INSERT INTO dates (date, subject) VALUES (?, ?)",
+                    (date, subject)
+                )
+                conn.commit()
 
-        # TODO: Insert into entries table
-        # IMPORTANT: include session["user"]
+                return redirect(url_for("dashboard"))
+            except:
+                conn.rollback()
 
-        # TODO: Commit and close
+            finally:
+                conn.close()
 
         return redirect(url_for("dashboard"))
 
     return render_template("create.html")
-"""
+
 
 # ---------- UPDATE ----------
 # TODO: Create a route like /edit/<id>

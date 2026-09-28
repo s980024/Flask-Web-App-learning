@@ -6,11 +6,12 @@
 <!-- TODO: Ask user to confirm deletion -->
 
 <p>Are you sure you want to delete this entry?</p>
+<h3>{{dates['date']}}</h3>
+<p>{{dates['subject']}}</p>
 
-<!-- TODO: Show entry title or content -->
+<form method="POST">
+    <button type="submit" style="background-color: red; color: white;">Yes</button>
+</form>
 
-<!-- TODO: Add a button to confirm delete -->
-
-<!-- TODO: Add a cancel link back to dashboard -->
-
+<a href="{{ url_for('dashboard') }}">Cancel</a>
 {% endblock %}

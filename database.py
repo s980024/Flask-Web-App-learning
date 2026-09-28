@@ -16,7 +16,8 @@ def init_db():
     """)
     conn.execute("""
         CREATE TABLE IF NOT EXISTS dates (
-            date TEXT PRIMARY KEY, 
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT, 
             subject TEXT
         )
     """)

@@ -13,9 +13,11 @@
     <!-- TODO: Pre-fill content using entry data -->
 
     <!-- TODO: Add submit button -->
-
+    <input name="date" placeholder="Date" value="{{entry['date']}}"><br>
+    <input name="subject" placeholder="Subject" value="{{entry['subject']}}"><br>
+    <button type="submit">Update Event</button> 
 </form>
 
 <!-- TODO: Add a link back to dashboard -->
-
+<a href="{{ url_for('dashboard')}}">Back to Dashboard</a>
 {% endblock %}

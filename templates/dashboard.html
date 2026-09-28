@@ -26,8 +26,8 @@
         
         <p>{{ event['subject'] }}</p>
 
-        <!-- TODO: Add Edit link -->
-        <!-- TODO: Add Delete link -->
+        <a href="{{ url_for('edit', id=event['id']) }}">Edit</a>
+        <a href="{{ url_for('delete', id=event['id']) }}">Delete</a>
         
     </div>
     <hr>

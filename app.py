@@ -154,21 +154,46 @@ def create():
 # - Show it in a form
 # - Update the database on submit
 
-"""
+
 @app.route("/edit/<int:id>", methods=["GET", "POST"])
 def edit(id):
     if "user" not in session:
         return redirect(url_for("login"))
 
     # TODO: Connect to database
+    conn = get_db()
+    event = conn.execute(
+        "Select * FROM dates WHERE id=?",
+        (id,)
+    ).fetchone()
+    
 
     # TODO: Get entry WHERE id AND user
     # This prevents editing other users' data
 
-    # if not entry:
-    #     return "Not allowed"
+    if not event:
+        conn.close()
+        return "Date not found"
 
     if request.method == "POST":
+        date = request.form["date"].strip()
+        subject = request.form["subject"].strip()
+
+        if not date or not subject:
+            error = "Fields cannot be empty"
+        else:
+            try:
+                conn.execute(
+                    "UPDATE dates SET date=?, subject=? WHERE id=?",
+                    (date, subject, id)
+                )
+                conn.commit()
+                conn.close()
+                return redirect(url_for("dashboard"))
+            except:
+                conn.rollback()
+                conn.close()
+                return "Error updating event."
         # TODO: Get updated form data
 
         # TODO: Update database
@@ -176,10 +201,10 @@ def edit(id):
 
         # TODO: Commit and close
 
-        return redirect(url_for("dashboard"))
+        # return redirect(url_for("dashboard"))
+    conn.close()
+    return render_template("edit.html", entry=event)
 
-    return render_template("edit.html", entry=entry)
-"""
 
 # ---------- DELETE ----------
 # TODO: Create a route like /delete/<id>
@@ -187,20 +212,38 @@ def edit(id):
 # - Delete an entry from the database
 # - Redirect back to dashboard
 
-"""
-@app.route("/delete/<int:id>")
+
+@app.route("/delete/<int:id>", methods=["GET", "POST"])
 def delete(id):
     if "user" not in session:
         return redirect(url_for("login"))
+    
+    conn = get_db()
+    entry = conn.execute(
+        "SELECT * FROM dates WHERE id=?",
+        (id,)
+    ).fetchone()
 
-    # TODO: Connect to database
+    if not entry:
+        conn.close()
+        return "Event not found."
 
-    # TODO: Delete entry WHERE id AND user
+    if request.method == "POST":
+        try:
+            conn.execute(
+                "DELETE FROM dates WHERE id=?",
+                (id,)
+            )
+            conn.commit()
+        except:
+            conn.rollback()
+        finally:
+            conn.close()
+        return redirect(url_for("dashboard"))
+    conn.close()
+    return render_template("delete.html", dates=entry)
+    
 
-    # TODO: Commit and close
-
-    return redirect(url_for("dashboard"))
-"""
 
 
 @app.route("/logout")

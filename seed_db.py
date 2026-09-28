@@ -26,9 +26,9 @@ def seed_database():
         ("charlie", "MyPassword789#"),
     ]
     sample_dates = [
-        ("may 1", "math-test"),
-        ("friday the fourth", "science-project"),
-        ("wednesday the seventh", "reading-test"),
+        ("may 1", "10:00", "math-test"),
+        ("friday the fourth", "4:00","science-project"),
+        ("wednesday the seventh", "5:00", "reading-test"),
     ]
     
     try:
@@ -39,10 +39,10 @@ def seed_database():
                 (username, hashed_pw)
             )
             print(f"Created user: {username}")
-        for date, subject in sample_dates:
+        for date, time, subject in sample_dates:
             conn.execute(
-                "INSERT INTO dates (date, subject) VALUES (?, ?)",
-                (date, subject)
+                "INSERT INTO dates (date, time, subject) VALUES (?, ?, ?)",
+                (date, time, subject)
             )
             print(f"Created entry: {date}")
         

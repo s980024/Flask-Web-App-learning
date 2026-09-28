@@ -122,16 +122,17 @@ def create():
     if request.method == "POST":
         # TODO: Get form data (title, content)
         date = request.form["date"].strip()
+        time = request.form["time"].strip()
         subject = request.form["subject"].strip()
         # TODO: Connect to database
-        if not date or not subject:
+        if not date or not time or not subject:
             error = "Fields cannot be empty"
         else:
             conn = get_db()
             try:
                 conn.execute(
-                    "INSERT INTO dates (date, subject) VALUES (?, ?)",
-                    (date, subject)
+                    "INSERT INTO dates (date, time, subject) VALUES (?, ?, ?)",
+                    (date, time, subject)
                 )
                 conn.commit()
 
@@ -177,15 +178,16 @@ def edit(id):
 
     if request.method == "POST":
         date = request.form["date"].strip()
+        time = request.form["time"].strip()
         subject = request.form["subject"].strip()
 
-        if not date or not subject:
+        if not date or not time or not subject:
             error = "Fields cannot be empty"
         else:
             try:
                 conn.execute(
-                    "UPDATE dates SET date=?, subject=? WHERE id=?",
-                    (date, subject, id)
+                    "UPDATE dates SET date=?, time=?, subject=? WHERE id=?",
+                    (date, time, subject, id)
                 )
                 conn.commit()
                 conn.close()

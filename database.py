@@ -18,6 +18,7 @@ def init_db():
         CREATE TABLE IF NOT EXISTS dates (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT, 
+            time TEXT,
             subject TEXT
         )
     """)

@@ -29,3 +29,140 @@ button {
 .error {
     color: red;
 }
+
+body.dashboard-page {
+    align-items: flex-start;
+    box-sizing: border-box;
+    height: auto;
+    min-height: 100vh;
+    padding: 24px 16px;
+}
+
+.dashboard-card {
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: left;
+    width: min(1120px, 100%);
+}
+
+.dashboard-header {
+    align-items: center;
+    border-bottom: 1px solid #d9dee3;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+}
+
+.dashboard-header h1 {
+    font-size: 28px;
+    margin: 0 0 6px;
+}
+
+.dashboard-header p {
+    color: #59636e;
+    margin: 0;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 16px;
+}
+
+.calendar-scroll {
+    overflow-x: auto;
+}
+
+.month-calendar {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.month-calendar th {
+    background: #e8edf0;
+    color: #26343b;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 6px;
+    text-align: left;
+}
+
+.month-calendar td {
+    background: #fff;
+    border: 1px solid #d9dee3;
+    height: 122px;
+    padding: 8px;
+    vertical-align: top;
+    width: 14.285%;
+}
+
+.month-calendar td.outside-month {
+    background: #f6f7f8;
+    color: #78828a;
+}
+
+.calendar-day {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.day-events {
+    display: grid;
+    gap: 6px;
+}
+
+.calendar-event {
+    background: #eaf3f2;
+    border-left: 3px solid #357b72;
+    padding: 6px;
+    overflow-wrap: anywhere;
+}
+
+.event-subject,
+.event-time {
+    margin: 0 0 3px;
+}
+
+.event-subject {
+    color: #183d38;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.event-time {
+    color: #53635f;
+    font-size: 12px;
+}
+
+.event-actions {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+}
+
+@media (max-width: 720px) {
+    body.dashboard-page {
+        padding: 12px 8px;
+    }
+
+    .dashboard-card {
+        padding: 16px;
+    }
+
+    .dashboard-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .month-calendar {
+        min-width: 700px;
+    }
+
+    .month-calendar td {
+        height: 110px;
+    }
+}

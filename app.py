@@ -4,7 +4,9 @@
 
 from flask import Flask, request, redirect, url_for, render_template, session
 from database import get_db, init_db
+import calendar
 import bcrypt
+from datetime import date
 import re
 
 app = Flask(__name__)
@@ -94,13 +96,27 @@ def dashboard():
         "SELECT * FROM dates"
     ).fetchall()
 
+    october = calendar.Calendar(firstweekday=6).monthdatescalendar(2026, 10)
+    events_by_day = {}
+    for event in dates:
+        try:
+            event_day = date.fromisoformat(event["date"])
+        except (TypeError, ValueError):
+            continue
+        events_by_day.setdefault(event_day.isoformat(), []).append(event)
+
     # TODO: Close the connection
     conn.close()
 
     # TODO: Pass entries into your template
     # Example:
     # return render_template("dashboard.html", entries=entries, username=session["user"])
-    return render_template("dashboard.html", dates=dates, username=session["user"])
+    return render_template(
+        "dashboard.html",
+        weeks=october,
+        events_by_day=events_by_day,
+        username=session["user"],
+    )
 
     # # TEMPORARY (remove later)
     # return render_template("dashboard.html", username=session["user"])

@@ -2,44 +2,58 @@
 
 {% extends "base.html" %}
 
+{% block body_class %}dashboard-page{% endblock %}
+{% block card_class %}dashboard-card{% endblock %}
+
 {% block content %}
-
-<h2>Your Dashboard</h2>
-
-<h3>Welcome, {{ username }}!</h3>
-
-<!-- TODO: Add a button or link to create a new entry -->
-<!-- Example: <a href="/create">Create New Entry</a> -->
- <a href="/create">Create New Event</a>
-
-<br><br>
-
-<!-- TODO: Loop through entries passed from Flask -->
-<!-- The variable "entries" will come from your Flask route -->
-<!-- Example structure: -->
-
-
-
-{% for event in dates %}
+<header class="dashboard-header">
     <div>
-        <h3>{{ event['date'] }}</h3>
-        <p>{{ event['time'] }}</p>
-        <p>{{ event['subject'] }}</p>
-
-        <a href="{{ url_for('edit', id=event['id']) }}">Edit</a>
-        <a href="{{ url_for('delete', id=event['id']) }}">Delete</a>
-        
+        <h1>October 2026</h1>
+        <p>Welcome, {{ username }}!</p>
     </div>
-    <hr>
-{% endfor %}
+    <nav class="dashboard-actions" aria-label="Dashboard actions">
+        <a href="{{ url_for('create') }}">Create New Event</a>
+        <a href="{{ url_for('logout') }}">Log out</a>
+    </nav>
+</header>
 
-<!-- TODO: If no entries exist, display a message like:
-"No entries yet!" -->
-
-<br>
-
-<!-- TODO: Add a logout button -->
-<a href="/logout"><button>Logout</button></a>
-
+<div class="calendar-scroll">
+    <table class="month-calendar">
+        <thead>
+            <tr>
+                <th scope="col">Sunday</th>
+                <th scope="col">Monday</th>
+                <th scope="col">Tuesday</th>
+                <th scope="col">Wednesday</th>
+                <th scope="col">Thursday</th>
+                <th scope="col">Friday</th>
+                <th scope="col">Saturday</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in weeks %}
+            <tr>
+                {% for day in week %}
+                <td class="{% if day.month != 10 %}outside-month{% endif %}">
+                    <time datetime="{{ day.isoformat() }}" class="calendar-day">{{ day.day }}</time>
+                    <div class="day-events">
+                        {% for event in events_by_day.get(day.isoformat(), []) %}
+                        <article class="calendar-event">
+                            <p class="event-subject">{{ event['subject'] }}</p>
+                            <p class="event-time">{{ event['time'] }}</p>
+                            <div class="event-actions">
+                                <a href="{{ url_for('edit', id=event['id']) }}">Edit</a>
+                                <a href="{{ url_for('delete', id=event['id']) }}">Delete</a>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 
 {% endblock %}

@@ -2,30 +2,31 @@
 
 **Due date:**
 
-L2: 5/19 @ End of Class  
-N1: 5/20 @ End of Class  
+M4:10/12/2026
 
-When you finish, add your names and a demo video link here, then submit one link to your project repository.
 
-**Group Members:** (list all group members here)  
-* [Demo Video (1 per group)](http://includeyourlinkhere)
+
+Project Done by Ella Dalton
+Client: Erin Byerly
+* [Client Video](https://drive.google.com/file/d/1a6VadKhRU_UnUR-UuodWWVejAvihfkio/view?usp=sharing)
 
 ---
 
 ### Project Overview
 
-You will begin with a **pre-built login and authentication system**. Your job is to **extend this project into a full CRUD web application** using Flask and a database.
+This project will be a webapp that is a calendar for students (and teachers) to use to better help organize everything they have
+going on in their lives. 
 
 [Video Walk-Through](https://www.youtube.com/playlist?list=PLcST98QTzmMjg5DeE25LoK-FTf0usG3Io)
 
-Your application must allow users to:
+The application will allow users to:
 - Log in (already implemented)
-- Create data
-- View data
-- Edit data
-- Delete data
+- Create dates
+- View dates
+- Edit dates
+- Delete dates
 
-Each user should only be able to access and modify **their own data**.
+Each user should only be able to access and modify **their own dates**.
 
 ---
 
@@ -38,10 +39,9 @@ Each user should only be able to access and modify **their own data**.
  - [Flask Tutorial](https://www.youtube.com/watch?t=347&v=Z1RJmh_OqeA) (we are already in a virtual environment so ignore comments about env)
 
 ---
+### Reflection:
+From the client feedback video there was some very helpful ideas about what would make this webapp perfect, like changing the colors of the events or giving the user the ability too, and fix the security issue.
 
-### Project Requirements:
-
----
 
 ### Part I: Setup & Understanding the Base Code (10 pts)
 - Fork the provided repository.

@@ -93,9 +93,11 @@ def dashboard():
     #     "SELECT * FROM entries"
     # ).fetchall()
     dates = conn.execute(
-        "SELECT * FROM dates"
+        "SELECT * FROM dates WHERE owner_username=?",
+        (session["user"],)
     ).fetchall()
 
+    # TODO: fix this so that it can show different months
     october = calendar.Calendar(firstweekday=6).monthdatescalendar(2026, 10)
     events_by_day = {}
     for event in dates:
@@ -147,8 +149,8 @@ def create():
             conn = get_db()
             try:
                 conn.execute(
-                    "INSERT INTO dates (date, time, subject) VALUES (?, ?, ?)",
-                    (date, time, subject)
+                    "INSERT INTO dates (date, time, subject, owner_username) VALUES (?, ?, ?, ?)",
+                    (date, time, subject, session["user"])
                 )
                 conn.commit()
 
@@ -180,8 +182,8 @@ def edit(id):
     # TODO: Connect to database
     conn = get_db()
     event = conn.execute(
-        "Select * FROM dates WHERE id=?",
-        (id,)
+        "Select * FROM dates WHERE id=? AND owner_username=?",
+        (id, session["user"])
     ).fetchone()
     
 
@@ -238,8 +240,8 @@ def delete(id):
     
     conn = get_db()
     entry = conn.execute(
-        "SELECT * FROM dates WHERE id=?",
-        (id,)
+        "SELECT * FROM dates WHERE id=? AND owner_username=?",
+        (id,session["user"])
     ).fetchone()
 
     if not entry:

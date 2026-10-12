@@ -40,7 +40,7 @@ Each user should only be able to access and modify **their own dates**.
 
 ---
 ### Reflection:
-From the client feedback video there was some very helpful ideas about what would make this webapp perfect, like changing the colors of the events or giving the user the ability too, and fix the security issue.
+From the client feedback video there was some very helpful ideas about what would make this webapp perfect, like changing the colors of the events or giving the user the ability too, having more than one month on the calendar, and fix the security issue. The security issue is fixed as now everybody can only see their own events. However, the color issue and the month issue were unfortunately not fixed due to the restraint of time. There was AI usage in this project as it mainly used for making the webapp look as it does now and every now and then it would help with errors (mainly with the html side of the code). Moreover, I did have an idea to fix the month issue but I fear there would not be enough time to test it out and fix it. If I were to do a project like this again I would try to focus more on learning the html side of it or ask for somebody that was more knoweledgable than me in it and so we could do it together. I would also, as said before, add more features like letting the user pick the color, the month would change, and try to connect it to other calendars that people commonly use. 
 
 
 ### Part I: Setup & Understanding the Base Code (10 pts)

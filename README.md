@@ -17,7 +17,7 @@ Client: Erin Byerly
 This project will be a webapp that is a calendar for students (and teachers) to use to better help organize everything they have
 going on in their lives. 
 
-[Video Walk-Through](https://www.youtube.com/playlist?list=PLcST98QTzmMjg5DeE25LoK-FTf0usG3Io)
+
 
 The application will allow users to:
 - Log in (already implemented)
@@ -30,13 +30,15 @@ Each user should only be able to access and modify **their own dates**.
 
 ---
 
-### Helpful Links for This Unit:
+### Links that were helpful/used for this project:
+
  - [Flask Documentation](https://flask.palletsprojects.com/en/2.3.x/)
  - [SQLite Documentation](https://www.sqlite.org/docs.html)
  - [Bcrypt Documentation](https://pypi.org/project/bcrypt/)
  - [Regex Tutorial for Python](https://docs.python.org/3/library/re.html)
  - [GitHub Cheat-Sheet](https://education.github.com/git-cheat-sheet-education.pdf)
  - [Flask Tutorial](https://www.youtube.com/watch?t=347&v=Z1RJmh_OqeA) (we are already in a virtual environment so ignore comments about env)
+ - [Video Walk-Through](https://www.youtube.com/playlist?list=PLcST98QTzmMjg5DeE25LoK-FTf0usG3Io)
 
 ---
 ### Reflection:

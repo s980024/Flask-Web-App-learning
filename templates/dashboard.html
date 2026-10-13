@@ -8,7 +8,7 @@
 {% block content %}
 <header class="dashboard-header">
     <div>
-        <h1>October 2026</h1>
+        <h1>{{ month_label }}</h1>
         <p>Welcome, {{ username }}!</p>
     </div>
     <nav class="dashboard-actions" aria-label="Dashboard actions">
@@ -34,7 +34,7 @@
             {% for week in weeks %}
             <tr>
                 {% for day in week %}
-                <td class="{% if day.month != 10 %}outside-month{% endif %}">
+                <td class="{% if day.month != month_number %}outside-month{% endif %}">
                     <time datetime="{{ day.isoformat() }}" class="calendar-day">{{ day.day }}</time>
                     <div class="day-events">
                         {% for event in events_by_day.get(day.isoformat(), []) %}

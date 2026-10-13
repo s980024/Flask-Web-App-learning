@@ -97,8 +97,8 @@ def dashboard():
         (session["user"],)
     ).fetchall()
 
-    # TODO: fix this so that it can show different months
-    october = calendar.Calendar(firstweekday=6).monthdatescalendar(2026, 10)
+    today = date.today()
+    months = calendar.Calendar(firstweekday=6).monthdatescalendar(today.year, today.month)
     events_by_day = {}
     for event in dates:
         try:
@@ -115,9 +115,11 @@ def dashboard():
     # return render_template("dashboard.html", entries=entries, username=session["user"])
     return render_template(
         "dashboard.html",
-        weeks=october,
+        weeks=months,
         events_by_day=events_by_day,
         username=session["user"],
+        month_label=today.strftime("%B %Y"),
+        month_number=today.month,
     )
 
     # # TEMPORARY (remove later)
